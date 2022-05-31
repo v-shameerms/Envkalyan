@@ -6,9 +6,8 @@
 trigger:
 - master
 
-pool:
-  vmImage: 'Default'
-
+pool:Hosted
+ 
 steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
