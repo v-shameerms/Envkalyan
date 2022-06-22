@@ -2,17 +2,16 @@
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
-stages:
-- stage: deploy
-  jobs:
-  - deployment: DeployWeb
-    displayName: deploy Web App
-    pool:test1
-      vmImage: 'Ubuntu-latest'
-    # creates an environment if it doesn't exist
-    environment: 'test1'
-    strategy:
-      runOnce:
-        deploy:
+trigger: none
+jobs:
+- deployment: VMDeploy
+  displayName: Deploy to VM
+  environment: 
+    name: testVM.VMIAOT030VM
+    resourceType: VirtualMachine
+    tags: testtag 
+  strategy:
+    runOnce:
+      deploy:   
           steps:
-          - script: echo Hello world
+          - script: echo "Hello world"
