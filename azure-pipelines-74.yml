@@ -1,0 +1,13 @@
+stages:
+- stage: Deploy
+  jobs:
+  - deployment: DeployWeb
+    displayName: deploy Web App
+    pool: Default
+    # creates an environment if it doesn't exist
+    environment: testkub
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - script: echo Hello world
